@@ -11,6 +11,7 @@ namespace Desktop_TNS.Models
     {
         [Key]
         public int idRaion { get; set; }
+        public string name { get; set; }
         public double area { get; set; }
         public double population { get; set; }
         public int countMentro { get; set; }

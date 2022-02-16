@@ -16,16 +16,25 @@ namespace Desktop_TNS.Models
         public string middleName { get; set; }
         public string gender { get; set; }
         public DateTime birth { get; set; }
+        public string idContract { get; set; }
+        public virtual Contract Contract { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
         public string addressPropiski { get; set; }
         public string idAbonentAddress { get; set; }
         public virtual AbonentAddress AbonentAddress { get; set; }
         public string passport_s { get; set; }
-        public string passporn_n { get; set; }
+        public string passport_n { get; set; }
         public string code { get; set; }
         public string issue { get; set; }
         public DateTime dateIssue { get; set; }
         public virtual List<CRM> CRMs { get; set; } = new List<CRM>();
+        public string fullName
+        {
+            get
+            {
+                return lastName + " " + firstName + " " + middleName;
+            }
+        }
     }
 }

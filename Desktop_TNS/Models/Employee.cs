@@ -19,5 +19,12 @@ namespace Desktop_TNS.Models
         public int idEmployeeType { get; set; }
         public virtual EmployeeType EmployeeType { get; set; }
         public string imagePath { get; set; }
+        public string fullName
+        {
+            get
+            {
+                return lastName + " " + firstName + " " + middleName;
+            }
+        }
     }
 }
