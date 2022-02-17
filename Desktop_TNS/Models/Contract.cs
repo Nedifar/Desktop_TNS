@@ -28,6 +28,7 @@ namespace Desktop_TNS.Models
                 string txt = String.Empty;
                 foreach(var l in Services)
                 {
+                    if(l !=null)
                     txt += l.name + " ";
                 }
                 return txt;

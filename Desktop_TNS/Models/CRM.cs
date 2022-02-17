@@ -21,7 +21,7 @@ namespace Desktop_TNS.Models
         public string status { get; set; }
         public string equipmentType { get; set; }
         public string problem { get; set; }
-        public DateTime dateClosed { get; set; }
+        public DateTime? dateClosed { get; set; }
         public string typeProblem { get; set; }
     }
 }

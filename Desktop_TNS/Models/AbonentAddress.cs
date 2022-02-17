@@ -18,5 +18,12 @@ namespace Desktop_TNS.Models
         public string house { get; set; }
         //public string AbonentNumber { get; set; }
         public virtual List<Abonent> Abonents { get; set; } = new List<Abonent>();
+        public string getStreet
+        {
+            get
+            {
+                return prefix.Split(',')[1].Trim();
+            }
+        }
     }
 }

@@ -45,5 +45,26 @@
             </ScrollViewer>
             <Button Content="Вниз" Click="clDown"/>
         </StackPanel>
+        <StackPanel HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <TextBlock Text="Фамилия:"  Margin="0 0 10 0"/>
+                <TextBox x:Name="searchLastName" TextChanged="searchLastName_TextChanged" Width="120"/>
+            </StackPanel>
+            <StackPanel Margin="0 5 0 0" Orientation="Horizontal" VerticalAlignment="Top">
+                <TextBlock Text="Лицевой счёт" Margin="0 0 10 0"/>
+                <TextBox x:Name="searchLc" TextChanged="searchLc_TextChanged" Width="120"/>
+            </StackPanel>
+        </StackPanel>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Top" Content="Сбросить все" Click="clClear"/>
+        <StackPanel HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal"  VerticalAlignment="Top">
+                <TextBlock Text="Улица:" Margin="0 0 10 0"/>
+                <ComboBox x:Name="searchStreet" Height="18" DisplayMemberPath="getStreet" SelectionChanged="searchStreet_TextChanged" Width="120"/>
+            </StackPanel>
+            <StackPanel Margin="0 5 0 0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <TextBlock Text="Дом" Margin="0 0 10 0"/>
+                <ComboBox x:Name="searchHome" DisplayMemberPath="house" Height="18" SelectionChanged="searchHome_TextChanged" Width="120"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

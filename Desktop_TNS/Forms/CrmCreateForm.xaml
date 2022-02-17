@@ -1,0 +1,75 @@
+﻿<Window x:Class="Desktop_TNS.Forms.CrmCreateForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Desktop_TNS.Forms"
+        mc:Ignorable="d"
+        Title="CrmCreateForm" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Создание заявки" FontSize="20" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Номер заявки:" Margin="0 0 10 0"/>
+                <TextBox Text="{Binding NumberCRM}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Дата создания:" Margin="0 0 10 0"/>
+                <TextBox Text="{Binding dateCreated, StringFormat={}{0:dd.MM.yyyy}}" IsReadOnly="True" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Номер абонента:" Margin="0 0 10 0"/>
+                <TextBox Text="{Binding AbonentNumber}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Лицевой счет:" Margin="0 0 10 0"/>
+                <TextBox Text="{Binding Abonent.Contract.lc}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Услуга:" Margin="0 0 10 0"/>
+                <ComboBox SelectedItem="{Binding Service}" x:Name="cbService" DisplayMemberPath="name" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Вид услуги:" Margin="0 0 10 0"/>
+                <ComboBox Text="{Binding serviceView}" SelectionChanged="cbViewService_SelectionChanged" x:Name="cbViewService" Width="140">
+                    <TextBlock>Подключение</TextBlock>
+                    <TextBlock>Управление договорами/контактными данными</TextBlock>
+                    <TextBlock>Управление тарифом/услугой</TextBlock>
+                    <TextBlock>Диагностика и настройка оборудывания/подключения</TextBlock>
+                    <TextBlock>Оплата услуг</TextBlock>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Тип услуги:" Margin="0 0 10 0"/>
+                <ComboBox Text="{Binding serviceType}" x:Name="cbTypeService" Width="140">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Статус:" Margin="0 0 10 0"/>
+                <TextBox x:Name="st" Text="{Binding status}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Тип оборудывания клиента:" Margin="0 0 10 0"/>
+                <TextBox Text="{Binding equipmentType}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Тип проблемы:" Margin="0 0 10 0"/>
+                <ComboBox Text="{Binding typeProblem}" Width="140">
+                    <TextBlock>Консультация</TextBlock>
+                    <TextBlock>Техническое обслуживание</TextBlock>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Описание проблемы:" Margin="0 0 10 0"/>
+                <TextBox Text="{Binding problem}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Дата закрытия:" Margin="0 0 10 0"/>
+                <TextBox x:Name="dtClosed" Text="{Binding dateClosed, StringFormat={}{0:dd.MM.yyyy}}" IsReadOnly="True" Width="140"/>
+            </StackPanel>
+            <Button Content="Проверить оборудывание" Click="clProverka" Margin="0 5 0 5"/>
+            <ProgressBar x:Name="progress" Height="20"/>
+            <Button Content="Сохранить" Click="clSave" Margin="0 5 0 0"/>
+        </StackPanel>
+    </Grid>
+</Window>

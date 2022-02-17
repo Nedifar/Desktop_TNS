@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Desktop_TNS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="1000">
     <Window.Resources>
         <Style TargetType="{x:Type Button}" x:Key="btS">
             <Style.Triggers>
@@ -17,7 +17,7 @@
                 </DataTrigger>
             </Style.Triggers>
             <Setter Property="Height" Value="37"/>
-            <Setter Property="Margin" Value="0 2"/>
+            <Setter Property="Margin" Value="2 2"/>
             <Setter Property="Background" Value="#4A67F7"/>
         </Style>
         <Style TargetType="{x:Type Image}" x:Key="imS">
@@ -36,7 +36,7 @@
         </Grid.ColumnDefinitions>
         <Rectangle Width="1" Fill="Black" HorizontalAlignment="Right"/>
         <StackPanel>
-            <Image Source="Resources/Лого ТНС.jpg"/>
+            <Image Margin="5" Source="Resources/Лого ТНС.jpg"/>
             <Button x:Name="btAbonent" Click="clAbonent" Style="{StaticResource btS}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Resources/Абоненты.png" Style="{StaticResource imS}"/>

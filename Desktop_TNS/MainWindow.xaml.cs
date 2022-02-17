@@ -57,7 +57,8 @@ namespace Desktop_TNS
             mainText.Text = "Абоненты ТНС";
             if (col1.Width.Value == 2)
                 sizeChange();
-            FrFame.MainFrame.Navigate(new Forms.AbonentForm(selEmp));
+            abForm = new Forms.AbonentForm(selEmp);
+            FrFame.MainFrame.Navigate(abForm);
         }
 
         private void clManage(object sender, RoutedEventArgs e)
@@ -90,6 +91,7 @@ namespace Desktop_TNS
 
         private void clCRM(object sender, RoutedEventArgs e)
         {
+            FrFame.MainFrame.Navigate(new Forms.CrmForming());
             mainText.Text = "CRM";
             if (col1.Width.Value == 2)
                 sizeChange();
@@ -189,51 +191,28 @@ namespace Desktop_TNS
 
         public void import()
         {
-            var lines = File.ReadAllLines(@"C:\Users\gazimov.ii0794\Desktop\врменная\Абоненты.txt");
+            var lines = File.ReadAllLines(@"C:\Users\gazimov.ii0794\Desktop\врменная\Заявки CRM.txt");
             foreach (var line in lines)
             {
                 string[] m = line.Split('\t');
-                string a = m[17];
-                string b = m[18];
-                string c = m[19];
-                var contr = new Models.Contract
+                string l = m[2];
+                string d = m[3];
+                var red = new Models.CRM
                 {
-                    idContract = m[12],
-                    dateConclude = Convert.ToDateTime(m[13]),
-                    typeContract = m[14],
-                    reasin = m[15],
-                    lc = m[16],
-                    description = m[21],
-                    serialNumber = m[22]
+                   NumberCRM = m[0],
+                   dateCreated = Convert.ToDateTime(m[1]),
+                   AbonentNumber = Models.context.aGetContext().Abonents.Where(p=>p.Contract.lc == l).FirstOrDefault().AbonentNumber,
+                   idService = Models.context.aGetContext().Services.Where(p=>p.name == d).FirstOrDefault().idService,
+                   serviceView = m[4],
+                   serviceType = m[5],
+                   status = m[6],
+                   typeProblem = m[10],
+                   problem = m[8],
+                   equipmentType = m[7]
                 };
-                if (m[20] != "")
-                    contr.dateConclude = Convert.ToDateTime(m[20]);
-                try { contr.Services.Add(Models.context.aGetContext().Services.Where(p => p.name == a).FirstOrDefault()); }
-                catch { }
-                try { contr.Services.Add(Models.context.aGetContext().Services.Where(p => p.name == b).FirstOrDefault()); }
-                catch { }
-                try { contr.Services.Add(Models.context.aGetContext().Services.Where(p => p.name == c).FirstOrDefault()); }
-                catch { }
-                var red = new Models.Abonent
-                {
-                    AbonentNumber = m[0],
-                    lastName = m[1].Split(' ')[0],
-                    firstName = m[1].Split(' ')[1],
-                    middleName = m[1].Split(' ')[2],
-                    gender = m[2],
-                    birth = Convert.ToDateTime(m[3]),
-                    phone = m[4],
-                    email = m[5],
-                    addressPropiski = m[6],
-                    idAbonentAddress = m[7],
-                    passport_s = m[8].Split(' ')[0],
-                    passport_n = m[8].Split(' ')[1],
-                    code = m[9],
-                    issue = m[10],
-                    dateIssue = Convert.ToDateTime(m[11]),
-                    Contract = contr
-                };
-                Models.context.aGetContext().Abonents.Add(red);
+                if (m[9].Trim() != "")
+                    red.dateClosed = Convert.ToDateTime(m[9]);
+                Models.context.aGetContext().CRMs.Add(red);
                 Models.context.aGetContext().SaveChanges();
             }
         }

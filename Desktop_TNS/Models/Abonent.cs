@@ -36,5 +36,20 @@ namespace Desktop_TNS.Models
                 return lastName + " " + firstName + " " + middleName;
             }
         }
+        public string crmsList
+        {
+            get
+            {
+                string res = String.Empty;
+                foreach(var l in CRMs)
+                {
+                    if(l!=null)
+                    {
+                        res += l.NumberCRM + ": " + l.dateCreated + "\n";
+                    }
+                }
+                return res;
+            }
+        }
     }
 }
