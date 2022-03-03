@@ -30,7 +30,6 @@ namespace Desktop_TNS
 
             //import();
             //json();
-            BSClass.MainBS.poRaionam();
 
 
 
