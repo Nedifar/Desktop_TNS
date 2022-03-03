@@ -1,0 +1,86 @@
+﻿<Page x:Class="Desktop_TNS.Forms.ManageForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desktop_TNS.Forms"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ManageForm">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Text="Магистрали" TextAlignment="Center" FontSize="18"/>
+            <DataGrid Margin="5" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dgMagistral" MouseDown="dgMagistral_MouseDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Серийный номер" Binding="{Binding serialNumber}"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Equipment.name}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Equipment.work}" Value="false">
+                                <Setter Property="BorderBrush" Value="Red"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                        <Setter Property="BorderThickness" Value="1"/>
+                    </Style>
+                </DataGrid.RowStyle>
+            </DataGrid>
+            <Button Margin="30 5" Content="Проверка магистралей" Click="clMagistralsFull"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Сети доступа" TextAlignment="Center" FontSize="18"/>
+            <DataGrid Margin="5" Height="390" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dgAccess" MouseDown="dgAccess_MouseDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Серийный номер" Binding="{Binding serialNumber}"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Equipment.name}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Equipment.work}" Value="false">
+                                <Setter Property="BorderBrush" Value="Red"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                        <Setter Property="BorderThickness" Value="1"/>
+                    </Style>
+                </DataGrid.RowStyle>
+            </DataGrid>
+            <Button Margin="30 5" Content="Проверка сетей доступа" Click="clAccessFull"/>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <TextBlock Text="Абонентское оборудывание" TextAlignment="Center" FontSize="18"/>
+            <DataGrid Margin="5"  IsReadOnly="True" AutoGenerateColumns="False" x:Name="dgAbEq" MouseDown="dgAbEq_MouseDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Серийный номер" Binding="{Binding serialNumber}"/>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Equipment.name}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Equipment.work}" Value="false">
+                                <Setter Property="BorderBrush" Value="Red"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                        <Setter Property="BorderThickness" Value="1"/>
+                    </Style>
+                </DataGrid.RowStyle>
+            </DataGrid>
+            <Button Margin="20 5" Content="Проверка абонентского оборудывания" Click="clAbEqFull"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Наименование" Margin="0 0 5 0"/>
+                <TextBox x:Name="searchName" TextChanged="nameChanged" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <TextBlock Text="Адрес" Margin="0 0 5 0"/>
+                <TextBox x:Name="searchStreet" TextChanged="streetChanged" Width="140"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

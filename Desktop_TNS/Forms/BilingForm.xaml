@@ -1,0 +1,106 @@
+﻿<Page x:Class="Desktop_TNS.Forms.BilingForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desktop_TNS.Forms"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="BilingForm">
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="Платежи">
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Текущая дата" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                                <DatePicker x:Name="dpDate" Width="120" SelectedDateChanged="dpDate_SelectedDateChanged"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 -18 0 0" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Сортировка" Margin="0 0 5 0"/>
+                                    <RadioButton x:Name="radZad" GroupName="Sort" Content="по задолженности" Checked="chk"/>
+                                    <RadioButton x:Name="radTarif" GroupName="Sort" Content="по тарифу" Checked="chk"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                                    <TextBlock Text="Поиск" Margin="0 0 5 0"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Услуга" Margin="0 0 5 0"/>
+                                        <ComboBox x:Name="cbService" DisplayMemberPath="name" Width="120" Height="18" SelectionChanged="cbService_SelectionChanged"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            <DataGrid Height="150" x:Name="dgTarifs" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="dgTarifs_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Лицевой счет" Binding="{Binding Abonent.Contract.lc}"/>
+                                    <DataGridTextColumn Header="Тариф" Binding="{Binding listTarifs}"/>
+                                    <DataGridTextColumn Header="Стоимость пакета" Binding="{Binding listTarifscost, StringFormat={}{0} рублей}"/>
+                                    <DataGridTextColumn Header="Задолженность" Binding="{Binding zadol}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBlock Text="История платежей" Margin="0 5"/>
+                            <DataGrid Height="150" x:Name="dgHistory" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Дата платежа" Binding="{Binding datePayment, StringFormat={}{0:dd.MM.yyyy}}"/>
+                                    <DataGridTextColumn Header="Сумма платежа" Binding="{Binding sumPayment}"/>
+                                    <DataGridTextColumn Header="Баланс абонента" Binding="{Binding balansPosle}"/>
+                                    <DataGridTextColumn Header="Задолженность после совершения платежа" Binding="{Binding arrearsPosle}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <StackPanel Orientation="Horizontal" Margin="0 5">
+                                <TextBlock Text="Период" Height="18"/>
+                                <DatePicker x:Name="dpBegin" Margin="10 0"  FontSize="10"/>
+                                <DatePicker x:Name="dpEnd" Margin="10 0"  FontSize="10"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Сфомировать квитанцию"/>
+                                <Button Content="pdf" Margin="10 0" Click="kvitPDF"/>
+                                <Button Content="doc" Margin="10 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 10">
+                                <TextBlock Text="Назначить пени"/>
+                                <Button  Content="pdf" Margin="62 0 10 0"/>
+                                <Button Content="doc" Margin="10 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 10">
+                                <TextBlock Text="Перерасчет"/>
+                                <RadioButton GroupName="peni" Content="Отмена пени" Margin="10 0 10 0"/>
+                                <RadioButton GroupName="peni" Content="без оплаты" Margin="10 0 10 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 10">
+                                <TextBlock Text="Сумма" Margin="0 0 10 0" />
+                                <TextBox x:Name="tbSum" Width="80"/>
+                                <Button  Content="pdf" Margin="22 0 10 0"/>
+                                <Button Content="doc" Margin="10 0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Отчеты">
+                <Grid>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Отчет по тарифам" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpTarifBegin" Margin="10 0"/>
+                            <DatePicker x:Name="dpTarifEnd" Margin="10 0"/>
+                            <Button Content="Сформировать" Click="clTarif"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Отчет по количеству новых подключений" VerticalAlignment="Center"/>
+                            <DatePicker x:Name="dpNewBegin" Margin="10 0"/>
+                            <DatePicker x:Name="dpNewEnd" Margin="10 0"/>
+                            <Button Content="Сформировать" Click="clRaion"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock Text="Отчет по приоритету услуг в райнах" VerticalAlignment="Center"/>
+                            <Button Content="Сформировать" Click="clPriority" Margin="10 0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

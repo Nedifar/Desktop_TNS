@@ -14,5 +14,6 @@ namespace Desktop_TNS.Models
         public string name { get; set; }
         public virtual List<Contract> Contracts { get; set; } = new List<Contract>(); 
         public virtual List<CRM> CRMs { get; set; } = new List<CRM>();
+        public virtual List<Tarif> Tarifs { get; set; } = new List<Tarif>();
     }
 }

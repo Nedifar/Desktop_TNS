@@ -41,6 +41,53 @@
     <ApplicationIcon>image.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataVisualization.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.datavisualization.core\21.2.5\lib\net452\DevExpress.DataVisualization.v21.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Docs.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.document.processor\21.2.5\lib\net452\DevExpress.Docs.v21.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Export, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.spreadsheet.core\21.2.5\lib\net452\DevExpress.Spreadsheet.v21.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.TreeMap.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.treemap.core\21.2.5\lib\net452\DevExpress.TreeMap.v21.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Core, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.win.pdfviewer\21.2.5\lib\net452\DevExpress.XtraPdfViewer.v21.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.win.richedit\21.2.5\lib\net452\DevExpress.XtraRichEdit.v21.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpreadsheet.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.win.spreadsheet\21.2.5\lib\net452\DevExpress.XtraSpreadsheet.v21.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeMap.v21.2, Version=21.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.treemap\21.2.5\lib\net452\DevExpress.XtraTreeMap.v21.2.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -53,6 +100,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,11 +120,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Forms\AbEqFullForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\AbonentForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\AbonentFullInformationForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\AccsesFullForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\BilingForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,6 +148,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\MagistralFullForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\ManageForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\PersonalForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SupportForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,17 +172,38 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Forms\AbEqFullForm.xaml.cs">
+      <DependentUpon>AbEqFullForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AbonentForm.xaml.cs">
       <DependentUpon>AbonentForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\AbonentFullInformationForm.xaml.cs">
       <DependentUpon>AbonentFullInformationForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AccsesFullForm.xaml.cs">
+      <DependentUpon>AccsesFullForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BilingForm.xaml.cs">
+      <DependentUpon>BilingForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CrmCreateForm.xaml.cs">
       <DependentUpon>CrmCreateForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\CrmForming.xaml.cs">
       <DependentUpon>CrmForming.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MagistralFullForm.xaml.cs">
+      <DependentUpon>MagistralFullForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ManageForm.xaml.cs">
+      <DependentUpon>ManageForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PersonalForm.xaml.cs">
+      <DependentUpon>PersonalForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SupportForm.xaml.cs">
+      <DependentUpon>SupportForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="FrFame.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -151,19 +248,77 @@
     <Compile Include="Migrations\202202170715543_add9.designer.cs">
       <DependentUpon>202202170715543_add9.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202170955265_add10.cs" />
+    <Compile Include="Migrations\202202170955265_add10.designer.cs">
+      <DependentUpon>202202170955265_add10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202171006493_add11.cs" />
+    <Compile Include="Migrations\202202171006493_add11.designer.cs">
+      <DependentUpon>202202171006493_add11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202171018452_add12.cs" />
+    <Compile Include="Migrations\202202171018452_add12.designer.cs">
+      <DependentUpon>202202171018452_add12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202180710138_m1.cs" />
+    <Compile Include="Migrations\202202180710138_m1.designer.cs">
+      <DependentUpon>202202180710138_m1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202180716389_m2.cs" />
+    <Compile Include="Migrations\202202180716389_m2.designer.cs">
+      <DependentUpon>202202180716389_m2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202220806452_r1.cs" />
+    <Compile Include="Migrations\202202220806452_r1.designer.cs">
+      <DependentUpon>202202220806452_r1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202250808536_new.cs" />
+    <Compile Include="Migrations\202202250808536_new.designer.cs">
+      <DependentUpon>202202250808536_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202280516015_k1.cs" />
+    <Compile Include="Migrations\202202280516015_k1.designer.cs">
+      <DependentUpon>202202280516015_k1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202280521319_k2.cs" />
+    <Compile Include="Migrations\202202280521319_k2.designer.cs">
+      <DependentUpon>202202280521319_k2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202280540062_k3.cs" />
+    <Compile Include="Migrations\202202280540062_k3.designer.cs">
+      <DependentUpon>202202280540062_k3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202280602422_k4.cs" />
+    <Compile Include="Migrations\202202280602422_k4.designer.cs">
+      <DependentUpon>202202280602422_k4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203020554097_l.cs" />
+    <Compile Include="Migrations\202203020554097_l.designer.cs">
+      <DependentUpon>202203020554097_l.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Abonent.cs" />
     <Compile Include="Models\AbonentAddress.cs" />
+    <Compile Include="Models\AbonentEquipment.cs" />
+    <Compile Include="Models\AbonentPayment.cs" />
+    <Compile Include="Models\AbonentTarif.cs" />
+    <Compile Include="Models\AccsesNetwork.cs" />
+    <Compile Include="Models\BaseStation.cs" />
     <Compile Include="Models\context.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\CRM.cs" />
+    <Compile Include="Models\DateTable.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeInformation.cs" />
     <Compile Include="Models\EmployeeType.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\EquipmentType.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Magistral.cs" />
     <Compile Include="Models\Raion.cs" />
     <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Tarif.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -204,6 +359,43 @@
     <EmbeddedResource Include="Migrations\202202170715543_add9.resx">
       <DependentUpon>202202170715543_add9.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202170955265_add10.resx">
+      <DependentUpon>202202170955265_add10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202171006493_add11.resx">
+      <DependentUpon>202202171006493_add11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202171018452_add12.resx">
+      <DependentUpon>202202171018452_add12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202180710138_m1.resx">
+      <DependentUpon>202202180710138_m1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202180716389_m2.resx">
+      <DependentUpon>202202180716389_m2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202220806452_r1.resx">
+      <DependentUpon>202202220806452_r1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202250808536_new.resx">
+      <DependentUpon>202202250808536_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202280516015_k1.resx">
+      <DependentUpon>202202280516015_k1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202280521319_k2.resx">
+      <DependentUpon>202202280521319_k2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202280540062_k3.resx">
+      <DependentUpon>202202280540062_k3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202280602422_k4.resx">
+      <DependentUpon>202202280602422_k4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203020554097_l.resx">
+      <DependentUpon>202203020554097_l.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -230,6 +422,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BSClass\BSClass.csproj">
+      <Project>{40b9eaec-bf48-47af-a499-b82559b124c3}</Project>
+      <Name>BSClass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

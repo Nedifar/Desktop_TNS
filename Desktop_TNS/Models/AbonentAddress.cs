@@ -25,5 +25,6 @@ namespace Desktop_TNS.Models
                 return prefix.Split(',')[1].Trim();
             }
         }
+        public virtual List<AbonentEquipment> AbonentEquipments { get; set; } = new List<AbonentEquipment>();
     }
 }

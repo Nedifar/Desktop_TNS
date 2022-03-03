@@ -15,6 +15,7 @@ namespace Desktop_TNS.Models
         public string firstName { get; set; }
         public string middleName { get; set; }
         public string gender { get; set; }
+        public virtual List<AbonentPayment> AbonentPayments { get; set; } = new List<AbonentPayment>();
         public DateTime birth { get; set; }
         public string idContract { get; set; }
         public virtual Contract Contract { get; set; }
@@ -51,5 +52,7 @@ namespace Desktop_TNS.Models
                 return res;
             }
         }
+
+        public virtual List<AbonentTarif> AbonentTarifs { get; set; } = new List<AbonentTarif>();
     }
 }

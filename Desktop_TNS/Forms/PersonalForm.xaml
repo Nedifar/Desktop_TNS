@@ -1,0 +1,167 @@
+﻿<Page x:Class="Desktop_TNS.Forms.PersonalForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desktop_TNS.Forms"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PersonalForm">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Карточка выбранной заявки:" FontSize="18"/>
+            <Border BorderBrush="Black" HorizontalAlignment="Left">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Номер ЛС:" Margin="0 0 5 0"/>
+                        <TextBlock x:Name="numberLC" Width="120"/>
+                    </StackPanel>
+                    <StackPanel Margin="0 5" Orientation="Horizontal">
+                        <TextBlock Text="Вид услуги:" Margin="0 0 5 0"/>
+                        <TextBlock x:Name="viewService" Width="120"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Дата и время:" Margin="0 0 5 0"/>
+                        <TextBlock x:Name="dateTimeT" Width="120"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <TextBlock Margin="0 5" Text="Инженеры" FontSize="18"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="&lt;" Click="clLeft"/>
+                <ScrollViewer x:Name="scrPersonal" CanContentScroll="True" Width="400" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden">
+                    <ListView x:Name="lvPersonal">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding fullName}" Click="clPers">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding getColor}" Value="отпуск">
+                                                    <Setter Property="Background" Value="#D7D3D8"/>
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding getColor}" Value="инженер">
+                                                    <Setter Property="Background" Value="#20EE49"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding getColor}" Value="обычный">
+                                                    <Setter Property="Background" Value="#20D9EE"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </ScrollViewer>
+                <Button Content=">" Click="clRight"/>
+            </StackPanel>
+            <TextBlock Text="Расписание инженеров:" Margin="0 5"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Button Content="btUp" Click="up_Click"/>
+                    <ScrollViewer Height="208" VerticalScrollBarVisibility="Hidden" x:Name="scrTime">
+                        <ListView x:Name="lvTime">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding time}" Height="26"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                    <Button Content="btDown" Click="down_Click"/>
+                </StackPanel>
+                <TextBlock x:Name="txt" Visibility="Collapsed"/>
+                <ScrollViewer Height="248" VerticalAlignment="Top" VerticalScrollBarVisibility="Hidden" Width="750" x:Name="scrDate">
+                    <ListView x:Name="lvDates" BorderThickness="1" BorderBrush="Black">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding date, StringFormat={}{0:dd.MM.yyyy}}" HorizontalAlignment="Center"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 21 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <Rectangle Fill="Black" Height="1" Margin=" -10 29 0 0"/>
+                                    <ListView ItemsSource="{Binding GetEvents}" HorizontalAlignment="Center" Background="{x:Null}" Width="200" BorderBrush="{x:Null}" Margin="0 -695 0 0">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Button HorizontalAlignment="Center" Height="{Binding height}" Width="180" Margin="{Binding margin}">
+                                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0 -3 0 0">
+                                                        <TextBlock Text="{Binding getPeriod}"/>
+                                                        <Rectangle Width="1" Fill="LightGray"/>
+                                                        <TextBlock Text="{Binding CRM.status}" />
+                                                    </StackPanel>
+                                                    <Button.Style>
+                                                        <Style TargetType="{x:Type Button}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding emp}" Value="false">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                </DataTrigger>
+                                                                <!--<DataTrigger Binding="{Binding ElementName=txt, Path=Text}" Value="{Binding CRM.AbonentNumber}">
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </DataTrigger>-->
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
+                                                    <Button.ToolTip>
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding CRM.NumberCRM, StringFormat=Номер заявки: {0}}"/>
+                                                            <TextBlock Text="{Binding getTime, StringFormat=Время выполнения: {0}}"/>
+                                                            <TextBlock Text="{Binding CRM.Service.name, StringFormat=Услуга: {0}}"/>
+                                                            <TextBlock Text="{Binding CRM.Abonent.addressPropiski, StringFormat=Адрес: {0}}"/>
+                                                        </StackPanel>
+                                                    </Button.ToolTip>
+                                                </Button>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <Canvas/>
+                                            </ItemsPanelTemplate>
+                                        </ListView.ItemsPanel>
+                                    </ListView>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
+            <Grid>
+                <Button Content="Назначить инженера" Click="clPersonalN" HorizontalAlignment="Left" Margin="0 5"/>
+                <Button Content="CSV" Click="clCSV" HorizontalAlignment="Right" Margin="0 5"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

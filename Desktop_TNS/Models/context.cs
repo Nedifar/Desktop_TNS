@@ -28,5 +28,15 @@ namespace Desktop_TNS.Models
         public DbSet<EquipmentType> EquipmentTypes { get; set; }
         public DbSet<Raion> Raions { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Magistral> Magistrals { get; set; }
+        public DbSet<AccsesNetwork> AccsesNetworks { get; set; }
+        public DbSet<AbonentEquipment> AbonentEquipments { get; set; }
+        public DbSet<BaseStation> BaseStations { get; set; }
+        public DbSet<DateTable> DateTables { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Tarif> Tarifs { get; set; }
+        public DbSet<AbonentTarif> AbonentTarifs { get; set; }
+        public DbSet<AbonentPayment> AbonentPayments { get; set; }
     }
 }

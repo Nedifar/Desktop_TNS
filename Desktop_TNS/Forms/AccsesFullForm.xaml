@@ -1,0 +1,47 @@
+﻿<Window x:Class="Desktop_TNS.Forms.AccsesFullForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Desktop_TNS.Forms"
+        mc:Ignorable="d"
+        Title="AccsesFullForm" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Информация о сети доступа" FontSize="20" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Серийный номер:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding serialNumber}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Название:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding Equipment.name}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Порты:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding ports}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Стандарт передачи:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding standart}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Частота:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding frequince}" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Интерфейсы:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding interfaces}" TextWrapping="Wrap" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Скорость:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding speed}" TextWrapping="Wrap" Width="140"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 5 0 0" HorizontalAlignment="Right">
+                <TextBlock Text="Местаположение:" Margin="0 0 10 0"/>
+                <TextBlock Text="{Binding location}" TextWrapping="Wrap" Width="140"/>
+            </StackPanel>
+            <Button Content="Проверить оборудывание" Click="clProverka" Margin="0 5 0 5"/>
+        </StackPanel>
+    </Grid>
+</Window>

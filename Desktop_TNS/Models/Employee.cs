@@ -26,5 +26,25 @@ namespace Desktop_TNS.Models
                 return lastName + " " + firstName + " " + middleName;
             }
         }
+        public virtual List<DateTable> DateTables { get; set; } = new List<DateTable>();
+        public virtual List<Event> Events { get; set; } = new List<Event>();
+        public string getColor
+        {
+            get
+            {
+                if(Events.Where(p=>p.date ==FrFame.dateT && p.begin==p.end).Count() !=0)
+                {
+                    return "отпуск";
+                }
+                //else if(Events.Where(p => p.CRM.Abonent.AbonentAddress.idRaion == FrFame.crmT.Abonent.AbonentAddress.idRaion).Count() != 0) !!!!!!!!!!!!!!!!!!!!!!!!!!
+                //{
+                //    return "инженер";
+                //}
+                else
+                {
+                    return "обычный";
+                }
+            }
+        }
     }
 }

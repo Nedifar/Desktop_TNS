@@ -30,7 +30,7 @@ namespace Desktop_TNS
 
             //import();
             //json();
-
+            BSClass.MainBS.poRaionam();
 
 
 
@@ -63,6 +63,7 @@ namespace Desktop_TNS
 
         private void clManage(object sender, RoutedEventArgs e)
         {
+            FrFame.MainFrame.Navigate(new Forms.ManageForm());
             mainText.Text = "Управление оборудыванием";
             if (col1.Width.Value == 2)
                 sizeChange();
@@ -77,6 +78,7 @@ namespace Desktop_TNS
 
         private void clBilling(object sender, RoutedEventArgs e)
         {
+            FrFame.MainFrame.Navigate(new Forms.BilingForm());
             mainText.Text = "Биллинг";
             if (col1.Width.Value == 2)
                 sizeChange();
@@ -84,6 +86,8 @@ namespace Desktop_TNS
 
         private void clSupport(object sender, RoutedEventArgs e)
         {
+            FrFame.sup = new Forms.SupportForm();
+            FrFame.MainFrame.Navigate(FrFame.sup);
             mainText.Text = "Поддержка пользователей";
             if (col1.Width.Value == 2)
                 sizeChange();
@@ -191,30 +195,28 @@ namespace Desktop_TNS
 
         public void import()
         {
-            var lines = File.ReadAllLines(@"C:\Users\gazimov.ii0794\Desktop\врменная\Заявки CRM.txt");
+            var lines = File.ReadAllLines(@"C:\Users\gazimov.ii0794\Desktop\врменная\Тарифы и оплата.txt");
             foreach (var line in lines)
             {
                 string[] m = line.Split('\t');
-                string l = m[2];
-                string d = m[3];
-                var red = new Models.CRM
+                string n = m[0];
+                var red = new Models.AbonentPayment
                 {
-                   NumberCRM = m[0],
-                   dateCreated = Convert.ToDateTime(m[1]),
-                   AbonentNumber = Models.context.aGetContext().Abonents.Where(p=>p.Contract.lc == l).FirstOrDefault().AbonentNumber,
-                   idService = Models.context.aGetContext().Services.Where(p=>p.name == d).FirstOrDefault().idService,
-                   serviceView = m[4],
-                   serviceType = m[5],
-                   status = m[6],
-                   typeProblem = m[10],
-                   problem = m[8],
-                   equipmentType = m[7]
+                    datePayment = Convert.ToDateTime(m[0]),
+                    sumPayment = Convert.ToDouble(m[1]),
+                    balans = Convert.ToDouble(m[2]),
+                    dateBalans = Convert.ToDateTime(m[3]),
+                    
+                    AbonentNumber = m[5]
                 };
-                if (m[9].Trim() != "")
-                    red.dateClosed = Convert.ToDateTime(m[9]);
-                Models.context.aGetContext().CRMs.Add(red);
-                Models.context.aGetContext().SaveChanges();
+                if (m[4] == "")
+                    red.arrears = null;
+                else
+                    red.arrears = Convert.ToDouble(m[4]);
+                Models.context.aGetContext().AbonentPayments.Add(red);
             }
+            Models.context.aGetContext().SaveChanges();
+
         }
         public void json()
         {
