@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BSClass
 {
-    class context : DbContext
+    public class context : DbContext
     {
         private static context _context;
         public context() : base("sql") { }

@@ -13,77 +13,120 @@ namespace BSClass
     public class MainBS
     {
         static bool hand = false;
-        private static async Task<string> ras(int i)
+        public static async Task<string> ras(int i)
         {
-            using (var http = new HttpClient())
+            try
             {
-                var response = await http.GetAsync($@"http://localhost:62727/api/basestation/{i}").ConfigureAwait(false);
-                response.EnsureSuccessStatusCode();
-                return response.Content.ReadAsStringAsync().Result;
+                using (var http = new HttpClient())
+                {
+                    var response = await http.GetAsync($@"http://localhost:62727/api/basestation/{i}").ConfigureAwait(false);
+                    response.EnsureSuccessStatusCode();
+                    return response.Content.ReadAsStringAsync().Result;
+                }
             }
+            catch
+            { return "В настоящий момент сервер недоступен, пожалуйста повторите попытку позднее"; }
         }
 
-        private static async Task<ActionResult<double>> modding(BaseStation mod, double R0, Raion raion)
+        public static async Task<ActionResult<string>> modding(BaseStation mod, double R0, Raion raion)
         {
-            if (mod.idBaseStation != 3 && mod.idBaseStation != 4)
+            if (R0 <= 0)
             {
-                mod.radius = Math.Sqrt(mod.area / Math.PI);
-                if (raion.typeBuild == "Плотная городская застройка")
+                return new NotFoundObjectResult("Радиус не может быть меньше нуля");
+            }
+            else
+            {
+                if ((mod.idBaseStation != 3 || mod.idBaseStation != 4) && mod.idBaseStation < 9)
                 {
-                    using (var http = new HttpClient())
+                    mod.radius = Math.Sqrt(mod.area / Math.PI);
+                    if (raion.typeBuild == "Плотная городская застройка")
                     {
-                        double l = 1.21 * Math.Pow(R0 * Math.Sqrt(mod.area / Math.PI), 2);
-                        var f = await ras(mod.idBaseStation).ConfigureAwait(false);
-                        if (Convert.ToInt32(f) < mod.begin)
+                        using (var http = new HttpClient())
+                        {
+                            double l = 1.21 * Math.Pow(R0 * Math.Sqrt(mod.area / Math.PI), 2);
+                            var f = await ras(mod.idBaseStation).ConfigureAwait(false);
+                            if (Convert.ToInt32(f) < mod.begin)
+                            {
+                                hand = true;
+                            }
+                            if (Convert.ToInt32(f) > mod.end)
+                            {
+                                return new NotFoundObjectResult("Показания хэндовера превышают допустимые");
+                            }
+                            return l.ToString();
+                        }
+                    }
+                    else if (raion.typeBuild == "Средняя городская застройка")
+                    {
+                        var http = new HttpClient();
+                        double l = 0.9 * Math.Pow(R0 * Math.Sqrt(mod.area / Math.PI), 2);
+                        var response = await http.GetAsync($@"http://localhost:62727/api/basestation/{mod.idBaseStation}").ConfigureAwait(false);
+                        response.EnsureSuccessStatusCode();
+                        var f = Convert.ToInt32(response.Content.ReadAsStringAsync().Result);
+                        if (f < mod.begin)
                         {
                             hand = true;
                         }
-                        L += l;
+                        if (f > mod.end)
+                        {
+                            return new NotFoundObjectResult("Показания хэндовера превышают допустимые");
+                        }
+                        return l.ToString();
+                    }
+                    else
+                    {
+                        return new NotFoundObjectResult("Тип постройки не найден");
                     }
                 }
-                else if (raion.typeBuild == "Средняя городская застройка")
-                {
-                    var http = new HttpClient();
-                    double l = 0.9 * Math.Pow(R0 * Math.Sqrt(mod.area / Math.PI), 2);
-                    var response = await http.GetAsync($@"http://localhost:62727/api/basestation/{mod.idBaseStation}").ConfigureAwait(false);
-                    response.EnsureSuccessStatusCode();
-                    var f = Convert.ToInt32(response.Content.ReadAsStringAsync().Result);
-                    if (f < mod.begin)
-                    {
-                        hand = true;
-                    }
-                    if (f > mod.end)
-                    {
-                        return new NotFoundObjectResult(null);
-                    }
-                    L += l;
-                }
+                else
+                    return new NotFoundObjectResult("Не найдена базовая станция с указанным id");
             }
         }
 
-        private async static Task<double> mainRaschet(Raion raion)
+        public async static Task<ActionResult<string>> mainRaschet(Raion raion)
         {
-            double L = 0;
-            double R0 = Math.Sqrt(raion.area / Math.PI);
-            foreach (var mod in context.aGetContext().BaseStations.OrderByDescending(p=>p.area).ToList())
+            if (raion.area > 0)
             {
-                var response = await modding(mod, R0, raion);
-                L += response.Value;
+                double L = 0;
+                double R0 = Math.Sqrt(raion.area / Math.PI);
+                foreach (var mod in context.aGetContext().BaseStations.OrderByDescending(p => p.area).ToList())
+                {
+                    var response = await modding(mod, R0, raion);
+                    var result = Convert.ToDouble(response.Value);
+                    L += result;
+                }
+                L = L / context.aGetContext().BaseStations.Count();
+                context.aGetContext().SaveChanges();
+                List<BaseStation> bases = context.aGetContext().BaseStations.ToList();
+                Random rnd = new Random();
+                double d1 = 0;
+                double d2 = 0;
+                double d3 = 0;
+                while (!(d1 > d2 && d1 > d3 && d2 > d3 && d3 != 0 && d2 != 0 && d1 != 0))
+                {
+                    d1 = bases[rnd.Next(bases.Count())].radius * 2;
+                    d2 = bases[rnd.Next(bases.Count())].radius * 2;
+                    d3 = bases[rnd.Next(bases.Count())].radius * 2;
+                }
+                double c = Math.Pow(d1, 2.5) + Math.Pow(d2, 1.5) + Math.Pow(d3, 0.5);
+                var res = Convert.ToDouble(getN(L, c, hand).Result.Value);
+                return res.ToString();
             }
-            L = L / context.aGetContext().BaseStations.Count();
-            context.aGetContext().SaveChanges();
-            List<BaseStation> bases = context.aGetContext().BaseStations.ToList();
-            Random rnd = new Random();
-            double d1 = 0;
-            double d2 = 0;
-            double d3 = 0;
-            while(!(d1> d2 && d1>d3 && d2>d3 && d3!=0 && d2!=0 && d1!=0))
+            else
+                return new NotFoundObjectResult("Радиус района не может быть меньше нуля");
+
+        }
+
+        public async static Task<ActionResult<string>> getN(double L, double c, bool hand)
+        {
+            if(L<=0)
             {
-                d1 = bases[rnd.Next(bases.Count())].radius * 2;
-                d2 = bases[rnd.Next(bases.Count())].radius * 2;
-                d3 = bases[rnd.Next(bases.Count())].radius * 2;
+                return new NotFoundObjectResult("Соты не могут равняться нулю, проверьте правильность введенных данных");
             }
-            double c = Math.Pow(d1, 2.5) + Math.Pow(d2, 1.5) + Math.Pow(d3, 0.5);
+            if(c<=0)
+            {
+                return new NotFoundObjectResult("Количество базовых станций в одном кластере не может равняться нулю");
+            }
             double n = 0;
             if (!hand)
             {
@@ -91,23 +134,29 @@ namespace BSClass
             }
             else
             {
-                n = L * c*1.4;
+                return new NotFoundObjectResult("Показания одной из базовых станций низкое, поэтому конечное количество базовых станций будет умножено на 1.4");
+                n = L * c * 1.4;
             }
-            return n;
+            return n.ToString();
         }
-        public static void poRaionam()
+        public static string poRaionam()
         {
-            foreach(var mod in context.aGetContext().Raions.ToList())
+            try
             {
-                Console.WriteLine(mod.name + " " + mainRaschet(mod).Result);
+                foreach (var mod in context.aGetContext().Raions.ToList())
+                {
+                    Console.WriteLine(mod.name + " " + mainRaschet(mod).Result);
+                }
+                return "good";
             }
+            catch { return "Ошибка в подключении к базе данных"; }
         }
         public static void AllRaions()
         {
             double n = 0;
             foreach (var mod in context.aGetContext().Raions.ToList())
             {
-                n = mainRaschet(mod).Result;
+                n = Convert.ToDouble(mainRaschet(mod).Result);
             }
             Console.WriteLine(n);
         }
